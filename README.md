@@ -23,7 +23,35 @@
 
 
 
+关于 **bximage** 的使用 (一定要跟着自己的系统来)
 
+```shell
+输入 :  bximage --help
+
+
+
+Usage: bximage [options] [filename1] [filename2]
+
+Supported options:
+  -func=...     operation to perform (create, convert, resize, commit, info)
+  -fd=...       create: floppy image with size code
+  -hd=...       create/resize: hard disk image with size in megabytes (M)
+                or gigabytes (G)
+  -imgmode=...  create/convert: hard disk image mode
+  -sectsize=... create: hard disk sector size
+  -b            convert/resize: create a backup of the source image
+                commit: create backups of the base image and redolog file
+  -q            quiet mode (don't prompt for user input)
+  --help        display this help and exit
+
+Other arguments:
+  filename1     create:  new image file
+                convert/resize: source image file
+                commit:  base image file
+  filename2     convert/resize: destination image file
+                commit:  redolog (journal) file
+
+```
 
 
 

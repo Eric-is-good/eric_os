@@ -27,7 +27,5 @@ mov byte [gs:0x0d], 0xA4
 mov byte [gs:0x0e], 'R'
 mov byte [gs:0x0f], 0xA4
 
-times 510-($-$$) db 0
-
 jmp $
 
