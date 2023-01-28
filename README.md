@@ -63,5 +63,10 @@ Other arguments:
 
 
 
-### 第四章  
+### 第四章  实现了 GDT 表，进入保护模式后，使用段选择子来初始化寄存器
 
+![](https://github.com/Eric-is-good/eric_os/raw/main/imgs/4.png)
+
+
+
+### 第五章 
