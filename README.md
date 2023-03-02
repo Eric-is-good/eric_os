@@ -69,4 +69,14 @@ Other arguments:
 
 
 
-### 第五章 
+
+
+
+
+### 第五章  实现了分页和内核加载，但因为暂未写打印函数，所以只有分页成功的截图
+
+![](https://github.com/Eric-is-good/eric_os/raw/main/imgs/5.png)
+
+
+
+### 第六章  
