@@ -48,7 +48,7 @@ DESC_S_SYS	kernel/global.h	23;"	d
 DESC_TYPE_CODE	kernel/global.h	24;"	d
 DESC_TYPE_DATA	kernel/global.h	25;"	d
 DESC_TYPE_TSS	kernel/global.h	26;"	d
-DISK_IMG	makefile	/^DISK_IMG = hd3M.img$/;"	m
+DISK_IMG	makefile	/^DISK_IMG = hd10M.img$/;"	m
 DISK_IMG2	makefile	/^DISK_IMG2 = hd50M.img$/;"	m
 DIV_ROUND_UP	kernel/global.h	120;"	d
 EFLAGS_IF	kernel/interrupt.c	14;"	d	file:
@@ -477,7 +477,7 @@ extern	command/start.S	/^extern	 main$/;"	l
 extern	kernel/kernel.S	/^extern idt_table		 ;idt_table是C中注册的中断处理程序数组$/;"	l
 extern	kernel/kernel.S	/^extern syscall_table$/;"	l
 f	makefile	/^	dd if=$(BUILD_DIR)\/kernel.bin \\$/;"	m
-f	makefile	/^	dd if=$(BUILD_DIR)\/loader.bin of=hd3M.img bs=512 count=4 seek=2 conv=notrunc$/;"	m
+f	makefile	/^	dd if=$(BUILD_DIR)\/loader.bin of=hd10M.img bs=512 count=4 seek=2 conv=notrunc$/;"	m
 f_type	fs/dir.h	/^   enum file_types f_type;	      \/\/ 文件类型$/;"	m	struct:dir_entry	typeref:enum:dir_entry::file_types
 false	kernel/global.h	123;"	d
 fd_flag	fs/file.h	/^   uint32_t fd_flag;$/;"	m	struct:file

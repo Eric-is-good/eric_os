@@ -13,7 +13,7 @@
 
 代码在文件夹 eric_os 里面。
 
-
+<img src="https://github.com/Eric-is-good/eric_os/raw/main/imgs/out.png">
 
 
 

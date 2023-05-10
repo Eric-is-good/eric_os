@@ -1,5 +1,5 @@
 BUILD_DIR = ./build
-DISK_IMG = hd3M.img
+DISK_IMG = hd10M.img
 DISK_IMG2 = hd50M.img
 ENTRY_POINT = 0xc0001500
 AS = nasm
@@ -10,6 +10,7 @@ ASFLAGS = -f elf
 ASBINLIB = -I boot/include/
 CFLAGS = -m32 -Wall $(LIB) -c -fno-builtin -W -Wstrict-prototypes \
 		 -Wmissing-prototypes  -fno-stack-protector
+		 
 LDFLAGS = -melf_i386 -Ttext $(ENTRY_POINT) -e main -Map $(BUILD_DIR)/kernel.map
 OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/init.o $(BUILD_DIR)/interrupt.o \
 	   $(BUILD_DIR)/timer.o $(BUILD_DIR)/kernel.o $(BUILD_DIR)/print.o \
@@ -211,16 +212,16 @@ mk_dir:
 	if [ ! -d $(BUILD_DIR) ];then mkdir $(BUILD_DIR);fi
 
 mk_img:
-	if [ ! -e $(DISK_IMG) ];then /usr/bin/bximage -hd -mode="flat" -size=3 -q $(DISK_IMG);fi
+	if [ ! -e $(DISK_IMG) ];then bximage -func="create" -hd=10M -q $(DISK_IMG);fi
 
 disk_img:
-	if [ ! -e $(DISK_IMG2) ];then /usr/bin/bximage -hd -mode="flat" -size=50 -q $(DISK_IMG2);fi
+	if [ ! -e $(DISK_IMG2) ];then bximage -func="create" -hd=50M -q $(DISK_IMG2);fi
 
 hd:
-	dd if=$(BUILD_DIR)/mbr.bin of=hd3M.img bs=512 count=1  conv=notrunc
-	dd if=$(BUILD_DIR)/loader.bin of=hd3M.img bs=512 count=4 seek=2 conv=notrunc
+	dd if=$(BUILD_DIR)/mbr.bin of=hd10M.img bs=512 count=1  conv=notrunc
+	dd if=$(BUILD_DIR)/loader.bin of=hd10M.img bs=512 count=4 seek=2 conv=notrunc
 	dd if=$(BUILD_DIR)/kernel.bin \
-		of=hd3M.img \
+		of=hd10M.img \
 		bs=512 count=200 seek=9 conv=notrunc
 ctags:
 	ctags -R
