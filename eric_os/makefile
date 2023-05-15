@@ -3,12 +3,12 @@ DISK_IMG = hd10M.img
 DISK_IMG2 = hd50M.img
 ENTRY_POINT = 0xc0001500
 AS = nasm
-CC = gcc
+CC = i686-elf-gcc
 LD = ld
 LIB = -I lib/ -I lib/kernel/ -I lib/user/ -I kernel/ -I device/ -I thread/  -I userprog/  -I fs/  -I shell/
 ASFLAGS = -f elf 
 ASBINLIB = -I boot/include/
-CFLAGS = -m32 -Wall $(LIB) -c -fno-builtin -W -Wstrict-prototypes \
+CFLAGS = -Wall $(LIB) -c -fno-builtin -W -Wstrict-prototypes \
 		 -Wmissing-prototypes  -fno-stack-protector
 		 
 LDFLAGS = -melf_i386 -Ttext $(ENTRY_POINT) -e main -Map $(BUILD_DIR)/kernel.map

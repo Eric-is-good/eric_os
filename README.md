@@ -21,7 +21,9 @@
 
 
 
-### 环境搭建   ->  直接 docker  pull  ericju/ubuntu-desktop-bochs:1.0
+### 环境搭建   ->  直接 docker  pull  ericju/ubuntu-desktop-bochs:1.1
+
+里面包含了编译好的 bochs 和 i686-elf-gcc 工具，我们可以直接在命令行中输入查看。
 
 基于 ericju/ubuntu-desktop 镜像  ， 在 [**这里**](https://github.com/Eric-is-good/docker-ubuntu-desktop)， 效果如下
 

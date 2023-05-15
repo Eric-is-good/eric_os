@@ -20,8 +20,8 @@ BIT_STAT_DRQ	device/ide.c	30;"	d	file:
 BLOCK_BITMAP	fs/file.h	/^   BLOCK_BITMAP	     \/\/ 块位图$/;"	e	enum:bitmap_type
 BLOCK_SIZE	fs/fs.h	8;"	d
 BUILD_DIR	makefile	/^BUILD_DIR = .\/build$/;"	m
-CC	makefile	/^CC = gcc$/;"	m
-CFLAGS	makefile	/^CFLAGS = -m32 -Wall $(LIB) -c -fno-builtin -W -Wstrict-prototypes \\$/;"	m
+CC	makefile	/^CC = i686-elf-gcc$/;"	m
+CFLAGS	makefile	/^CFLAGS = -Wall $(LIB) -c -fno-builtin -W -Wstrict-prototypes \\$/;"	m
 CMD_IDENTIFY	device/ide.c	38;"	d	file:
 CMD_READ_SECTOR	device/ide.c	39;"	d	file:
 CMD_WRITE_SECTOR	device/ide.c	40;"	d	file:
