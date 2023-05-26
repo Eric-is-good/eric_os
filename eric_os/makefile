@@ -120,7 +120,8 @@ $(BUILD_DIR)/syscall-init.o: userprog/syscall-init.c userprog/syscall-init.h \
 	$(CC) $(CFLAGS) $< -o $@
 
 $(BUILD_DIR)/stdio.o: lib/stdio.c lib/stdio.h lib/stdint.h kernel/interrupt.h \
-	lib/stdint.h kernel/global.h lib/string.h lib/user/syscall.h lib/kernel/print.h
+	lib/stdint.h kernel/global.h lib/string.h lib/user/syscall.h lib/kernel/print.h \
+	lib/user/assert.h
 	$(CC) $(CFLAGS) $< -o $@
 
 $(BUILD_DIR)/ide.o: device/ide.c device/ide.h lib/stdint.h thread/sync.h \

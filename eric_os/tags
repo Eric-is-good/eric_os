@@ -357,6 +357,7 @@ close	lib/user/syscall.c	/^int32_t close(int32_t fd) {$/;"	f
 closedir	lib/user/syscall.c	/^int32_t closedir(struct dir* dir) {$/;"	f
 cls_screen	lib/kernel/print.S	/^cls_screen:$/;"	l
 cmd_execute	shell/shell.c	/^static void cmd_execute(uint32_t argc, char** argv) {$/;"	f	file:
+cmd_line	lib/stdio.c	/^static char cmd_line[100] = {0};$/;"	v	file:
 cmd_line	shell/shell.c	/^static char cmd_line[MAX_PATH_LEN] = {0};$/;"	v	file:
 cmd_out	device/ide.c	/^static void cmd_out(struct ide_channel* channel, uint8_t cmd) {$/;"	f	file:
 cmd_parse	shell/shell.c	/^static int32_t cmd_parse(char* cmd_str, char** argv, char token) {$/;"	f	file:
@@ -527,7 +528,9 @@ get_free_slot_in_global	fs/file.c	/^int32_t get_free_slot_in_global(void) {$/;"	
 get_kernel_pages	kernel/memory.c	/^void* get_kernel_pages(uint32_t pg_cnt) {$/;"	f
 get_parent_dir_inode_nr	fs/fs.c	/^static uint32_t get_parent_dir_inode_nr(uint32_t child_inode_nr, void* io_buf) {$/;"	f	file:
 get_user_pages	kernel/memory.c	/^void* get_user_pages(uint32_t pg_cnt) {$/;"	f
+getch	lib/stdio.c	/^int getch(void){$/;"	f
 getcwd	lib/user/syscall.c	/^char* getcwd(char* buf, uint32_t size) {$/;"	f
+getint	lib/stdio.c	/^int getint(void){$/;"	f
 getpid	lib/user/syscall.c	/^uint32_t getpid() {$/;"	f
 global	command/start.S	/^global _start$/;"	l
 global	kernel/kernel.S	/^global intr_entry_table$/;"	l
@@ -702,6 +705,7 @@ logic_parts	device/ide.h	/^   struct partition logic_parts[8];	   \/\/ 逻辑分
 lseek	lib/user/syscall.c	/^int32_t lseek(int32_t fd, int32_t offset, uint8_t whence) {$/;"	f
 magic	fs/super_block.h	/^   uint32_t magic;		    \/\/ 用来标识文件系统类型,支持多文件系统的操作系统通过此标志来识别文件系统类型$/;"	m	struct:super_block
 main	command/cat.c	/^int main(int argc, char** argv) {$/;"	f
+main	command/prog.c	/^int main(){$/;"	f
 main	kernel/main.c	/^int main(void) {$/;"	f
 main_thread	thread/thread.c	/^struct task_struct* main_thread;    \/\/ 主线程PCB$/;"	v	typeref:struct:task_struct
 make_clear_abs_path	shell/buildin_cmd.c	/^void make_clear_abs_path(char* path, char* final_path) {$/;"	f
@@ -821,12 +825,15 @@ put_char	lib/kernel/print.S	/^put_char:$/;"	l
 put_int	lib/kernel/print.S	/^put_int:$/;"	l
 put_int_buffer	lib/kernel/print.S	/^put_int_buffer    dq    0     ; 定义8字节缓冲区用于数字到字符的转换$/;"	d
 put_str	lib/kernel/print.S	/^put_str:$/;"	l
+putch	lib/stdio.c	/^void putch(int i){$/;"	f
 putchar	lib/user/syscall.c	/^void putchar(char char_asci) {$/;"	f
+putint	lib/stdio.c	/^void putint(int i){$/;"	f
 rd_disk_m_16	boot/mbr.S	/^rd_disk_m_16:	   $/;"	l
 rd_disk_m_32	boot/loader.S	/^rd_disk_m_32:	   $/;"	l
 read	lib/user/syscall.c	/^int32_t read(int32_t fd, void* buf, uint32_t count) {$/;"	f
 read_from_sector	device/ide.c	/^static void read_from_sector(struct disk* hd, void* buf, uint8_t sec_cnt) {$/;"	f	file:
 readdir	lib/user/syscall.c	/^struct dir_entry* readdir(struct dir* dir) {$/;"	f
+readline	lib/stdio.c	/^static void readline(char* buf, int32_t count) {$/;"	f	file:
 readline	shell/shell.c	/^static void readline(char* buf, int32_t count) {$/;"	f	file:
 reg_alt_status	device/ide.c	24;"	d	file:
 reg_cmd	device/ide.c	23;"	d	file:
@@ -988,12 +995,12 @@ update_tss_esp	userprog/tss.c	/^void update_tss_esp(struct task_struct* pthread)
 user_pool	kernel/memory.c	/^struct pool kernel_pool, user_pool;      \/\/ 生成内核内存池和用户内存池$/;"	v	typeref:struct:
 user_spin	lib/user/assert.c	/^void user_spin(char* filename, int line, const char* func, const char* condition) {$/;"	f
 userprog_vaddr	thread/thread.h	/^   struct virtual_addr userprog_vaddr;   \/\/ 用户进程的虚拟地址$/;"	m	struct:task_struct	typeref:struct:task_struct::virtual_addr
-va_arg	lib/stdio.c	9;"	d	file:
+va_arg	lib/stdio.c	14;"	d	file:
 va_end	lib/kernel/stdio-kernel.c	8;"	d	file:
-va_end	lib/stdio.c	10;"	d	file:
+va_end	lib/stdio.c	15;"	d	file:
 va_list	lib/stdio.h	/^typedef char* va_list;$/;"	t
 va_start	lib/kernel/stdio-kernel.c	7;"	d	file:
-va_start	lib/stdio.c	8;"	d	file:
+va_start	lib/stdio.c	13;"	d	file:
 vaddr_bitmap	kernel/memory.h	/^   struct bitmap vaddr_bitmap;$/;"	m	struct:virtual_addr	typeref:struct:virtual_addr::bitmap
 vaddr_get	kernel/memory.c	/^static void* vaddr_get(enum pool_flags pf, uint32_t pg_cnt) {$/;"	f	file:
 vaddr_remove	kernel/memory.c	/^static void vaddr_remove(enum pool_flags pf, void* _vaddr, uint32_t pg_cnt) {$/;"	f	file:
