@@ -1,23 +1,30 @@
 #include "stdio.h"
 #include "syscall.h"
 
-// int main() {
-//    printf("eric\n");
-//    putint(666);
-//    printf("\n");
-//    putch(65);
-//    printf("\n");
-//    putfloat(123.12);
-//    printf("\n");
-//    exit(0);
-// }
+void han(int n, int from, int to, int temp)
+{
+    if (n == 1)
+    {
+        putint(n);
+        putch(from);
+        putch(to);
+        //putch(10);
+    }
+    else
+    {
+        han(n - 1, from, temp, to);
+        putint(n);
+        putch(from);
+        putch(to);
+        //putch(10);
+        han(n - 1, temp, to, from);
+    }
+}
 
-int main(){
-   int a = getint();
-   putint(a);
-
-   int b = getch();
-   putch(b);
-   
-   exit(0);
+int main()
+{
+    int n = getint();
+    han(n, 65, 66, 67);
+    return 0;
+    exit(0);
 }

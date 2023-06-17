@@ -1,6 +1,6 @@
 BUILD_DIR = ./build
-DISK_IMG = hd10M.img
-DISK_IMG2 = hd50M.img
+DISK_IMG = hd50M.img
+DISK_IMG2 = hd80M.img
 ENTRY_POINT = 0xc0001500
 AS = nasm
 CC = i686-elf-gcc
@@ -213,21 +213,22 @@ mk_dir:
 	if [ ! -d $(BUILD_DIR) ];then mkdir $(BUILD_DIR);fi
 
 mk_img:
-	if [ ! -e $(DISK_IMG) ];then bximage -func="create" -hd=10M -q $(DISK_IMG);fi
+	if [ ! -e $(DISK_IMG) ];then bximage -func="create" -hd=50M -q $(DISK_IMG);fi
 
 disk_img:
-	if [ ! -e $(DISK_IMG2) ];then bximage -func="create" -hd=50M -q $(DISK_IMG2);fi
+	if [ ! -e $(DISK_IMG2) ];then bximage -func="create" -hd=80M -q $(DISK_IMG2);fi
 
 hd:
-	dd if=$(BUILD_DIR)/mbr.bin of=hd10M.img bs=512 count=1  conv=notrunc
-	dd if=$(BUILD_DIR)/loader.bin of=hd10M.img bs=512 count=4 seek=2 conv=notrunc
+	dd if=$(BUILD_DIR)/mbr.bin of=hd50M.img bs=512 count=1  conv=notrunc
+	dd if=$(BUILD_DIR)/loader.bin of=hd50M.img bs=512 count=4 seek=2 conv=notrunc
 	dd if=$(BUILD_DIR)/kernel.bin \
-		of=hd10M.img \
+		of=hd50M.img \
 		bs=512 count=200 seek=9 conv=notrunc
 ctags:
 	ctags -R
 
 clean:
+	rm -f ./*.img ./*.lock
 	cd $(BUILD_DIR) && rm -f ./* && if [ -e hd*.img  ];then rm ../*.img;fi
 
 build: $(BUILD_DIR)/kernel.bin $(BUILD_DIR)/mbr.bin $(BUILD_DIR)/loader.bin

@@ -23,7 +23,7 @@ int main(void) {
    init_all();
 
 /*************    写入应用程序    *************/
-  uint32_t file_size = 7544; 
+  uint32_t file_size = 10600;    
   uint32_t sec_cnt = DIV_ROUND_UP(file_size, 512);
   struct disk* sda = &channels[0].devices[0];
   void* prog_buf = sys_malloc(file_size);
@@ -35,6 +35,7 @@ int main(void) {
         while(1);
      }
   }
+
 /*************    写入应用程序结束   *************/
    cls_screen();
    console_put_str("[eric@localhost /]$ ");

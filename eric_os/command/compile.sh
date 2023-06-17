@@ -15,7 +15,7 @@ BIN="prog"
 CFLAGS="-Wall -c -fno-builtin -W -Wstrict-prototypes \
       -Wmissing-prototypes -Wsystem-headers"
 CFLAGS_S="-Wall -S -fno-builtin -W -Wstrict-prototypes \
-      -Wmissing-prototypes -Wsystem-headers"
+      -Wmissing-prototypes -Wsystem-headers -O"
 LIBS="-I ../lib/ -I ../lib/kernel/ -I ../lib/user/ -I \
       ../kernel/ -I ../device/ -I ../thread/ -I \
       ../userprog/ -I ../fs/ -I ../shell/"
@@ -23,12 +23,17 @@ OBJS="../build/string.o ../build/syscall.o \
       ../build/stdio.o ../build/assert.o start.o"
 
 DD_IN=$BIN
-DD_OUT="../hd10M.img" 
+DD_OUT="../hd50M.img" 
 
 nasm -f elf ./start.S -o ./start.o
 ar rcs simple_crt.a $OBJS start.o
-i686-elf-gcc $CFLAGS $LIBS -o $BIN".o" $BIN".c"
-#i686-elf-gcc $CFLAGS_S -o $BIN".S" $BIN".c"
+
+
+ i686-elf-gcc $CFLAGS $LIBS -o $BIN".o" $BIN".c"
+# i686-elf-gcc $CFLAGS_S $LIBS -o $BIN".S" $BIN".c"
+# i686-elf-gcc $CFLAGS $LIBS -o $BIN".o" $BIN".S"
+
+
 ld -melf_i386 $BIN".o" simple_crt.a -o $BIN
 SEC_CNT=$(ls -l $BIN|awk '{printf("%d", ($5+511)/512)}')
 

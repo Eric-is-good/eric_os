@@ -117,7 +117,9 @@ static void read_from_sector(struct disk* hd, void* buf, uint8_t sec_cnt) {
     } else { 
         size_in_byte = sec_cnt * 512; 
     }
-    insw(reg_data(hd->my_channel), buf, size_in_byte / 2);
+
+
+    insw(reg_data(hd->my_channel), buf, size_in_byte / 2);   // buf > buf + 16 *512 (累加到 16) 时有 bug
 }
 
 /* 将buf中sec_cnt扇区的数据写入硬盘 */
@@ -175,6 +177,9 @@ void ide_read(struct disk* hd, uint32_t lba, void* buf, uint32_t sec_cnt) {   //
           将自己阻塞,等待硬盘完成读操作后通过中断处理程序唤醒自己*/
         sema_down(&hd->my_channel->disk_done);
         /*************************************************************/
+        
+        // printf("%d %d %d %d %d %d\n", hd, lba, secs_done, secs_op, sec_cnt, buf+7680); 
+
 
         /* 4 检测硬盘状态是否可读 */
         /* 醒来后开始执行下面代码*/
@@ -185,8 +190,13 @@ void ide_read(struct disk* hd, uint32_t lba, void* buf, uint32_t sec_cnt) {   //
         }
 
         /* 5 把数据从硬盘的缓冲区中读出 */
-        read_from_sector(hd, (void*)((uint32_t)buf + secs_done * 512), secs_op);
+        
+        // buf > buf + 16 *512 (累加到 16) 时有 bug
+        // 猜测 malloc 开辟的内存不能简单的相加得到下一块内容
+        read_from_sector(hd, (void*)((uint32_t)buf + secs_done * 512), secs_op);  
+        
         secs_done += secs_op;
+
     }
     lock_release(&hd->my_channel->lock);
 }
