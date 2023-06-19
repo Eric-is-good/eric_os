@@ -5,18 +5,20 @@ void han(int n, int from, int to, int temp)
 {
     if (n == 1)
     {
-        putint(n);
         putch(from);
+        putch(45);
+        putch(62);
         putch(to);
-        //putch(10);
+        putch(10);
     }
     else
     {
         han(n - 1, from, temp, to);
-        putint(n);
         putch(from);
+        putch(45);
+        putch(62);
         putch(to);
-        //putch(10);
+        putch(10);
         han(n - 1, temp, to, from);
     }
 }

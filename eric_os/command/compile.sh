@@ -29,9 +29,9 @@ nasm -f elf ./start.S -o ./start.o
 ar rcs simple_crt.a $OBJS start.o
 
 
- i686-elf-gcc $CFLAGS $LIBS -o $BIN".o" $BIN".c"
+# i686-elf-gcc $CFLAGS $LIBS -o $BIN".o" $BIN".c"
 # i686-elf-gcc $CFLAGS_S $LIBS -o $BIN".S" $BIN".c"
-# i686-elf-gcc $CFLAGS $LIBS -o $BIN".o" $BIN".S"
+i686-elf-gcc $CFLAGS $LIBS -o $BIN".o" $BIN".S"
 
 
 ld -melf_i386 $BIN".o" simple_crt.a -o $BIN

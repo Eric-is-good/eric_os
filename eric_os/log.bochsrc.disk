@@ -34,7 +34,7 @@
 00000000000i[IMG   ] Disk image modules
 00000000000i[IMG   ]   flat concat sparse dll growing undoable volatile vmware3
 00000000000i[IMG   ]   vmware4 vbox vpc vvfat
-00000000000i[MEM0  ] allocated memory at 0x7fe93464d010. after alignment, vector=0x7fe93464e000
+00000000000i[MEM0  ] allocated memory at 0x7fef97bbb010. after alignment, vector=0x7fef97bbc000
 00000000000i[MEM0  ] 32.00MB
 00000000000i[MEM0  ] mem block size = 0x00020000, blocks=256
 00000000000i[MEM0  ] rom at 0xfffe0000/131072 ('/home/bochs/share/bochs/BIOS-bochs-latest')
@@ -45,7 +45,7 @@
 00000000000i[DEV   ] PIIX3 PCI-to-ISA bridge present at device 1, function 0
 00000000000i[PLUGIN] init_dev of 'cmos' plugin device by virtual method
 00000000000i[CMOS  ] Using local time for initial clock
-00000000000i[CMOS  ] Setting initial clock to: Sat Jun 17 23:10:04 2023 (time0=1687014604)
+00000000000i[CMOS  ] Setting initial clock to: Mon Jun 19 09:23:18 2023 (time0=1687137798)
 00000000000i[PLUGIN] init_dev of 'dma' plugin device by virtual method
 00000000000i[DMA   ] channel 4 used by cascade
 00000000000i[PLUGIN] init_dev of 'pic' plugin device by virtual method
@@ -189,7 +189,7 @@
 00000322283i[BIOS  ] ram_end=32MB
 00000363028i[BIOS  ] Found 1 cpu(s)
 00000376681i[BIOS  ] bios_table_addr: 0x000f9d98 end=0x000fcc00
-00000609552i[XGUI  ] charmap update. Font is 9 x 16
+00000609124i[XGUI  ] charmap update. Font is 9 x 16
 00000704497i[PCI   ] i440FX PMC write to PAM register 59 (TLB Flush)
 00001032432i[P2ISA ] PCI IRQ routing: PIRQA# set to 0x0b
 00001032456i[P2ISA ] PCI IRQ routing: PIRQB# set to 0x09
@@ -223,5 +223,5 @@
 00001540149i[VBIOS ] VBE Bios $Id: vbe.c 292 2021-06-03 12:24:22Z vruppert $
 00001768688i[BIOS  ] ata0-0: PCHS=6/16/63 translation=none LCHS=6/16/63
 00001809596i[BIOS  ] ata0-1: PCHS=101/16/63 translation=none LCHS=101/16/63
-00004126456i[XGUI  ] charmap update. Font is 9 x 16
+00004336108i[XGUI  ] charmap update. Font is 9 x 16
 00013883287i[BIOS  ] Booting from 0000:7c00

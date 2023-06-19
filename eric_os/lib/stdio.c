@@ -132,11 +132,11 @@ static void readline(char* buf, int32_t count) {
 }
 
 void putint(int i){
-   printf("%d\n", i);
+   printf("%d", i);
 }
 
 void putch(int i){
-   printf("%c\n", i);
+   printf("%c", i);
 }
 
 int getint(void){
